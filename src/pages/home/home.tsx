@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductService } from '../../services/product/productService';
 import { Product } from '../../components/card/card';
+import "./home.css";
 
 interface Product {
     id: number;

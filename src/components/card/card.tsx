@@ -1,3 +1,4 @@
+import './card.css'
 
 interface ProductProps {
     image: string;

@@ -3,7 +3,7 @@ import { responseInterceptor } from "./interceptors/ResponseInterceptors";
 import { errorInterceptors } from "./interceptors/ErrorInterceptor";
 
 const Api = axios.create({
-    baseURL: 'localhost:8080'
+    baseURL: 'http://localhost:8080'
 });
 
 Api.interceptors.response.use(
