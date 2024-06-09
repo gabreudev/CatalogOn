@@ -7,17 +7,19 @@ interface Product {
     id: number;
     nome: string;
     descricao: string;
-    price: number;
+    preco: number;
     img: string;
 }
 
 export const Home = () => {
+    
     const [products, setProducts] = useState<Product[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
             const result = await ProductService.getAll();
+            
             if (result instanceof Error) {
                 setError(result.message);
             } else {
@@ -40,7 +42,7 @@ export const Home = () => {
                     <div className="col" key={product.id}>
                         <Product
                             image={product.img}
-                            price={product.price}
+                            preco={product.preco}
                             title={product.nome}
                             description={product.descricao}
                         />
