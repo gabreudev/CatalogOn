@@ -1,14 +1,11 @@
-import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Routs } from './Routes/routes';
 
-
 function App() {
-
   return (
-
-   <Routs />
-  
-  )
+    <Routs />
+  );
 }
 
-export default App
+export default App;

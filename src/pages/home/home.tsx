@@ -29,21 +29,22 @@ export const Home = () => {
     }, []);
 
     if (error) {
-        return <p>{error}</p>;
+        return <div className="alert alert-danger" role="alert">{error}</div>;
     }
 
     return (
-        <div>
-            <h1>Produtos</h1>
-            <div className="product-list">
+        <div className="container my-4">
+            <h1 className="mb-4">Produtos</h1>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
                 {products.map(product => (
-                    <Product
-                        key={product.id}
-                        image={product.img}
-                        price={product.price}
-                        title={product.nome}
-                        description={product.descricao}
-                    />
+                    <div className="col" key={product.id}>
+                        <Product
+                            image={product.img}
+                            price={product.price}
+                            title={product.nome}
+                            description={product.descricao}
+                        />
+                    </div>
                 ))}
             </div>
         </div>
