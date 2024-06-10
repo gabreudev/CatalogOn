@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { ProductService } from '../../services/product/productService';
 import { Product } from '../../components/card/card';
-import "./home.css";
+import Navbar from '../../components/navbar/navbar';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+
+
 
 interface Product {
     id: number;
@@ -35,6 +39,9 @@ export const Home = () => {
     }
 
     return (
+        <>
+        <Navbar />
+        <Header />
         <div className="container my-4">
             <h1 className="mb-4">Produtos</h1>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
@@ -50,5 +57,7 @@ export const Home = () => {
                 ))}
             </div>
         </div>
+        <Footer />
+        </>
     );
 };
