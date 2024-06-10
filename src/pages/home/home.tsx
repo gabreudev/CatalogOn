@@ -1,63 +1,58 @@
+// src/pages/Home.tsx
 import { useEffect, useState } from 'react';
 import { ProductService } from '../../services/product/productService';
-import { Product } from '../../components/card/card';
+import ProductList from '../../components/productList/productList';
 import Navbar from '../../components/navbar/navbar';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 
-
-
 interface Product {
-    id: number;
-    nome: string;
-    descricao: string;
-    preco: number;
-    img: string;
+  id: number;
+  nome: string;
+  descricao: string;
+  preco: number;
+  img: string;
 }
 
 export const Home = () => {
-    
-    const [products, setProducts] = useState<Product[]>([]);
-    const [error, setError] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            const result = await ProductService.getAll();
-            
-            if (result instanceof Error) {
-                setError(result.message);
-            } else {
-                setProducts(result);
-            }
-        };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const result = await ProductService.getAll();
 
-        fetchProducts();
-    }, []);
+      if (result instanceof Error) {
+        setError(result.message);
+      } else {
+        setProducts(result);
+      }
+    };
 
-    if (error) {
-        return <div className="alert alert-danger" role="alert">{error}</div>;
-    }
+    fetchProducts();
+  }, []);
 
-    return (
-        <>
-        <Navbar />
-        <Header />
-        <div className="container my-4">
-            <h1 className="mb-4">Produtos</h1>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                {products.map(product => (
-                    <div className="col" key={product.id}>
-                        <Product
-                            image={product.img}
-                            preco={product.preco}
-                            title={product.nome}
-                            description={product.descricao}
-                        />
-                    </div>
-                ))}
-            </div>
-        </div>
-        <Footer />
-        </>
-    );
+  if (error) {
+    return <div className="alert alert-danger" role="alert">{error}</div>;
+  }
+
+  const formattedProducts = products.map(product => ({
+    id: product.id,
+    image: product.img,
+    price: product.preco,
+    title: product.nome,
+    description: product.descricao,
+  }));
+
+  return (
+    <>
+      <Navbar />
+      <Header />
+      <div className="container my-4">
+        <h1 className="mb-4">Produtos</h1>
+        <ProductList products={formattedProducts} />
+      </div>
+      <Footer />
+    </>
+  );
 };

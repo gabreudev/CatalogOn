@@ -1,21 +1,38 @@
+import React from 'react';
 
 interface ProductProps {
-    image: string;
-    preco: number;
-    title: string;
-    description: string;
+  image: string;
+  price: number;
+  title: string;
+  description: string;
 }
 
-export function Product({ preco, title, description, image }: ProductProps) {
-    return (
-        <div className="card" style={{ width: '18rem' }}>
-            <img src={image} className="card-img-top" alt={title} />
-            <div className="card-body">
-                <h5 className="card-title">{title}</h5>
-                <p className="card-text">{description}</p>
-                <p className="card-text">R$ {preco}</p>
-                <a href="#" className="btn btn-primary">Go somewhere</a>
-            </div>
+const Product: React.FC<ProductProps> = ({ image, price, title, description }) => {
+  return (
+    <div className="col mb-5">
+      <div className="card h-100">
+        <img 
+          className="card-img-top" 
+          src={image} 
+          alt={title} 
+          style={{ height: '200px', width: '100%', objectFit: 'contain' }} 
+        />
+        <div className="card-body p-4">
+          <div className="text-center">
+            <h5 className="fw-bolder">{title}</h5>
+            <p className="card-text">{description}</p>
+            <span>R$ {price.toFixed(2)}</span>
+          </div>
         </div>
-    );
-}
+        <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
+          <div className="text-center">
+            <button className="btn btn-outline-dark mt-auto" style={{ marginRight: '10px' }}>Add to Cart</button>
+            <button className="btn btn-primary mt-auto">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Product;
