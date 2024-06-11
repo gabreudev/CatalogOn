@@ -1,18 +1,11 @@
-// src/pages/Home.tsx
 import { useEffect, useState } from 'react';
 import { ProductService } from '../../services/product/productService';
 import ProductList from '../../components/productList/productList';
 import Navbar from '../../components/navbar/navbar';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import {Product } from '../../interface/Produto';
 
-interface Product {
-  id: number;
-  nome: string;
-  descricao: string;
-  preco: number;
-  img: string;
-}
 
 export const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -39,7 +32,7 @@ export const Home = () => {
   const formattedProducts = products.map(product => ({
     id: product.id,
     image: product.img,
-    price: product.preco,
+    preco: product.preco,
     title: product.nome,
     description: product.descricao,
   }));

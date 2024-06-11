@@ -1,17 +1,24 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Product from '../card/card';
 
 interface ProductListProps {
   products: {
     id: number;
     image: string;
-    price: number;
+    preco: number;
     title: string;
     description: string;
   }[];
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  const navigate = useNavigate();
+
+  const handleProductClick = (id: number) => {
+    navigate(`/produto/${id}`);
+  };
+
   return (
     <section className="py-5">
       <div className="container px-4 px-lg-5 mt-5">
@@ -19,10 +26,12 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
           {products.map((product) => (
             <Product
               key={product.id}
+              id={product.id}
               image={product.image}
-              price={product.price}
+              price={product.preco}
               title={product.title}
               description={product.description}
+              onClick={handleProductClick}
             />
           ))}
         </div>

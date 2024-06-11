@@ -1,15 +1,17 @@
 import React from 'react';
 
 interface ProductProps {
+  id: number;
   image: string;
   price: number;
   title: string;
   description: string;
+  onClick: (id: number) => void;
 }
 
-const Product: React.FC<ProductProps> = ({ image, price, title, description }) => {
+const Product: React.FC<ProductProps> = ({ id, image, price, title, description, onClick }) => {
   return (
-    <div className="col mb-5">
+    <div className="col mb-5" onClick={() => onClick(id)} style={{ cursor: 'pointer' }}>
       <div className="card h-100">
         <img 
           className="card-img-top" 
@@ -27,7 +29,7 @@ const Product: React.FC<ProductProps> = ({ image, price, title, description }) =
         <div className="card-footer p-4 pt-0 border-top-0 bg-transparent">
           <div className="text-center">
             <button className="btn btn-outline-dark mt-auto" style={{ marginRight: '10px' }}>Add to Cart</button>
-            <button className="btn btn-primary mt-auto">Buy Now</button>
+            <button className="btn btn-primary mt-auto">Comprar</button>
           </div>
         </div>
       </div>
