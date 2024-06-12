@@ -43,7 +43,7 @@ export const Produto: React.FC = () => {
     <div className="container mt-5">
       <div className="card shadow-lg p-3 mb-5 bg-white rounded">
         <div className="row g-0">
-          <div className="col-md-6">
+          <div className="col-md-12">
             <div className="image-container">
               <img 
                 src={product.img} 
@@ -52,7 +52,7 @@ export const Produto: React.FC = () => {
               />
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-12">
             <div className="card-body">
               <h1 className="card-title">{product.nome}</h1>
               <p className="card-text">{product.descricao}</p>
