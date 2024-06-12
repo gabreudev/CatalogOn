@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ProductService } from '../../services/product/productService'; // Ajuste o caminho conforme necessário
+import { ProductService } from '../../services/product/productService'; 
+import './produto.css'; 
 
 interface Product {
   id: number;
   nome: string;
   descricao: string;
-  price: number;
+  preco: number;
   img: string;
 }
 
@@ -21,10 +22,12 @@ export const Produto: React.FC = () => {
         if (!(result instanceof Error)) {
           setProduct(result);
         } else {
-          console.error(result.message);
+          console.error('Error fetching product:', result.message);
         }
         setLoading(false);
       });
+    } else {
+      setLoading(false);
     }
   }, [id]);
 
@@ -38,22 +41,27 @@ export const Produto: React.FC = () => {
 
   return (
     <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-6">
-          <img 
-            src={product.img} 
-            alt={product.nome} 
-            className="img-fluid" 
-            style={{ height: '400px', width: '100%', objectFit: 'contain' }} 
-          />
-        </div>
-        <div className="col-md-6">
-          <h1 className="fw-bolder">{product.nome}</h1>
-          <p>{product.descricao}</p>
-          <h2>R$ {product.price.toFixed(2)}</h2>
-          <div className="mt-4">
-            <button className="btn btn-outline-dark" style={{ marginRight: '10px' }}>Add to Cart</button>
-            <button className="btn btn-primary">Buy Now</button>
+      <div className="card shadow-lg p-3 mb-5 bg-white rounded">
+        <div className="row g-0">
+          <div className="col-md-6">
+            <div className="image-container">
+              <img 
+                src={product.img} 
+                alt={product.nome} 
+                className="img-fluid rounded-start" 
+              />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="card-body">
+              <h1 className="card-title">{product.nome}</h1>
+              <p className="card-text">{product.descricao}</p>
+              <h2 className="card-text">R$ {product.preco.toFixed(2)}</h2>
+              <div className="mt-4">
+                <button className="btn btn-outline-dark" style={{ marginRight: '10px' }}>Add to Cart</button>
+                <button className="btn btn-primary">Buy Now</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
