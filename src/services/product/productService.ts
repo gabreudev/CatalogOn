@@ -1,12 +1,7 @@
 import { Api } from '../axios-config';
+import { Product } from "./../../interface/Produto";
 
-interface Product {
-    id: number;
-    nome: string;
-    descricao: string;
-    price: number;
-    img: string;
-}
+
 
 const getAll = async (): Promise<Product[] | Error> => {
     try {
