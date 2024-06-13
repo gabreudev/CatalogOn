@@ -9,7 +9,7 @@ interface ProductProps {
   onClick: (id: number) => void;
 }
 
-const Product: React.FC<ProductProps> = ({ id, image, price, title, description, onClick }) => {
+const Product: React.FC<ProductProps> = ({ id, image, price, title, onClick }) => {
   return (
     <div className="col mb-5" onClick={() => onClick(id)} style={{ cursor: 'pointer' }}>
       <div className="card h-100">
@@ -22,7 +22,6 @@ const Product: React.FC<ProductProps> = ({ id, image, price, title, description,
         <div className="card-body p-4">
           <div className="text-center">
             <h5 className="fw-bolder">{title}</h5>
-            <p className="card-text">{description}</p>
             <span>R$ {price.toFixed(2)}</span>
           </div>
         </div>
