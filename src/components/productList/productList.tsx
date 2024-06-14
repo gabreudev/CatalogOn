@@ -41,4 +41,3 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
 };
 
 export default ProductList;
-
