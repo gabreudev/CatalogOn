@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 import React from 'react';
 
 const Navbar: React.FC = () => {
@@ -25,7 +24,7 @@ const Navbar: React.FC = () => {
           </ul>
           <form className="d-flex">
             <button className="btn btn-outline-dark" type="submit">
-              <i className="bi-cart-fill me-1"></i>
+              <i className="bi-cart-fill me-1" ></i>
               Cart
               <span className="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
