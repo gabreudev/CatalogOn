@@ -42,7 +42,6 @@ export const Home = () => {
       <Navbar />
       <Header />
       <div className="container my-4">
-        <h1 className="mb-4">Produtos</h1>
         <ProductList products={formattedProducts} />
       </div>
       <Footer />
